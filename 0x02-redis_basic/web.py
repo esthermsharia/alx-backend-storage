@@ -13,7 +13,7 @@ def get_page(url: str) -> str:
     response = requests.get(url)
     r.incr("count:{}".format(url))
     r.setex("cached:{}".format(url), 10, r.get("cached:{}".format(url)))
-    return response
+    return response.txt
 
 
 if __name__ == "__main__":
