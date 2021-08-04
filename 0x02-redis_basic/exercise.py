@@ -4,7 +4,7 @@
 """
 import redis
 from uuid import uuid4
-from typing import Union, List
+from typing import Union
 
 
 class Cache:
@@ -13,7 +13,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data: List[Union[str, bytes, int, float]]):
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """Stores the data in redis"""
         r_key = str(uuid4())
         self._redis.set(r_key, data)
